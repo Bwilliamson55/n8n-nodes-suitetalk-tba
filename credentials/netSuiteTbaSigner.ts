@@ -109,12 +109,13 @@ export function signRequest(
 	overrides: SignOverrides = {},
 ): IHttpRequestOptions {
 	const method = String(requestOptions.method ?? 'GET').toUpperCase();
+	// The built-in HTTP Request node passes the older request shape (uri / baseUrl) to authenticate().
+	const legacy = requestOptions as { uri?: unknown; baseUrl?: unknown };
+	const target = String(requestOptions.url ?? legacy.uri ?? '');
+	const base = requestOptions.baseURL ?? legacy.baseUrl;
 	let url: URL;
 	try {
-		url = new URL(
-			String(requestOptions.url ?? ''),
-			requestOptions.baseURL ? String(requestOptions.baseURL) : undefined,
-		);
+		url = new URL(target, base ? String(base) : undefined);
 	} catch {
 		throw new Error(
 			'NetSuite TBA: the request URL must be absolute, or the request needs a base URL',

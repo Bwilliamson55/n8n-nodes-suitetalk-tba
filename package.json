@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-suitetalk-tba",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "n8n node and credential for NetSuite SuiteTalk REST with token-based authentication (OAuth 1.0, HMAC-SHA256): SuiteQL queries and custom requests with real status codes and headers",
 	"keywords": [
 		"n8n-community-node-package",
