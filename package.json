@@ -1,0 +1,55 @@
+{
+	"name": "n8n-nodes-netsuite-tba-http",
+	"version": "0.1.0",
+	"description": "n8n credential for NetSuite token-based authentication (OAuth 1.0, HMAC-SHA256) that signs requests made by the built-in HTTP Request node",
+	"keywords": [
+		"n8n-community-node-package",
+		"netsuite",
+		"tba",
+		"token-based-authentication",
+		"oauth1",
+		"suiteql",
+		"credential"
+	],
+	"license": "MIT",
+	"homepage": "https://github.com/Bwilliamson55/n8n-nodes-netsuite-tba-http",
+	"author": {
+		"name": "Ben Williamson",
+		"email": "bwilliamson@mail.weeumson.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Bwilliamson55/n8n-nodes-netsuite-tba-http.git"
+	},
+	"main": "index.js",
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"format": "prettier credentials --write",
+		"lint": "eslint credentials package.json",
+		"lintfix": "eslint credentials package.json --fix",
+		"prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js credentials package.json"
+	},
+	"files": [
+		"dist",
+		"!dist/package.json"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"credentials": [
+			"dist/credentials/NetSuiteTbaHttpApi.credentials.js"
+		],
+		"nodes": []
+	},
+	"devDependencies": {
+		"@typescript-eslint/parser": "~8.32.0",
+		"eslint": "^8.57.1",
+		"eslint-plugin-n8n-nodes-base": "^1.16.4",
+		"n8n-workflow": "^2.2.1",
+		"prettier": "^2.8.8",
+		"typescript": "~5.3.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
