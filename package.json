@@ -1,34 +1,34 @@
 {
-	"name": "n8n-nodes-netsuite-tba-http",
+	"name": "n8n-nodes-suitetalk-tba",
 	"version": "0.1.0",
-	"description": "n8n credential for NetSuite token-based authentication (OAuth 1.0, HMAC-SHA256) that signs requests made by the built-in HTTP Request node",
+	"description": "n8n node and credential for NetSuite SuiteTalk REST with token-based authentication (OAuth 1.0, HMAC-SHA256): SuiteQL queries and custom requests with real status codes and headers",
 	"keywords": [
 		"n8n-community-node-package",
 		"netsuite",
+		"suitetalk",
+		"suiteql",
 		"tba",
 		"token-based-authentication",
-		"oauth1",
-		"suiteql",
-		"credential"
+		"oauth1"
 	],
 	"license": "MIT",
-	"homepage": "https://github.com/Bwilliamson55/n8n-nodes-netsuite-tba-http",
+	"homepage": "https://github.com/Bwilliamson55/n8n-nodes-suitetalk-tba",
 	"author": {
 		"name": "Ben Williamson",
 		"email": "bwilliamson@mail.weeumson.com"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Bwilliamson55/n8n-nodes-netsuite-tba-http.git"
+		"url": "https://github.com/Bwilliamson55/n8n-nodes-suitetalk-tba.git"
 	},
 	"main": "index.js",
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc && gulp build:icons",
 		"dev": "tsc --watch",
-		"format": "prettier credentials --write",
-		"lint": "eslint credentials package.json",
-		"lintfix": "eslint credentials package.json --fix",
-		"prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js credentials package.json"
+		"format": "prettier nodes credentials --write",
+		"lint": "eslint nodes credentials package.json",
+		"lintfix": "eslint nodes credentials package.json --fix",
+		"prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
 	},
 	"files": [
 		"dist",
@@ -37,14 +37,17 @@
 	"n8n": {
 		"n8nNodesApiVersion": 1,
 		"credentials": [
-			"dist/credentials/NetSuiteTbaHttpApi.credentials.js"
+			"dist/credentials/NetSuiteTbaApi.credentials.js"
 		],
-		"nodes": []
+		"nodes": [
+			"dist/nodes/NetSuiteTba/NetSuiteTba.node.js"
+		]
 	},
 	"devDependencies": {
 		"@typescript-eslint/parser": "~8.32.0",
 		"eslint": "^8.57.1",
 		"eslint-plugin-n8n-nodes-base": "^1.16.4",
+		"gulp": "^4.0.2",
 		"n8n-workflow": "^2.2.1",
 		"prettier": "^2.8.8",
 		"typescript": "~5.3.3"

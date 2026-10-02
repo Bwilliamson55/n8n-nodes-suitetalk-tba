@@ -27,8 +27,6 @@ module.exports = {
 			extends: ['plugin:n8n-nodes-base/community'],
 			rules: {
 				'n8n-nodes-base/community-package-json-name-still-default': 'off',
-				// Credential-only package: no nodes by design.
-				'n8n-nodes-base/community-package-json-n8n-nodes-empty': 'off',
 			},
 		},
 		{
@@ -38,6 +36,14 @@ module.exports = {
 			rules: {
 				'n8n-nodes-base/cred-class-field-documentation-url-missing': 'off',
 				'n8n-nodes-base/cred-class-field-documentation-url-miscased': 'off',
+			},
+		},
+		{
+			files: ['./nodes/**/*.ts'],
+			plugins: ['eslint-plugin-n8n-nodes-base'],
+			extends: ['plugin:n8n-nodes-base/nodes'],
+			rules: {
+				'n8n-nodes-base/node-resource-description-filename-against-convention': 'off',
 			},
 		},
 	],

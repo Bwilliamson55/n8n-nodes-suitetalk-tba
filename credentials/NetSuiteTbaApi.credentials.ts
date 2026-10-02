@@ -8,10 +8,12 @@ import type {
 
 import { signRequest } from './netSuiteTbaSigner';
 
-export class NetSuiteTbaHttpApi implements ICredentialType {
-	name = 'netSuiteTbaHttpApi';
+export class NetSuiteTbaApi implements ICredentialType {
+	name = 'netSuiteTbaApi';
 
-	displayName = 'NetSuite TBA (HTTP Request) API';
+	displayName = 'NetSuite TBA API';
+
+	icon = 'file:netsuiteTba.svg' as const;
 
 	documentationUrl =
 		'https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_4247329078.html';
@@ -60,7 +62,8 @@ export class NetSuiteTbaHttpApi implements ICredentialType {
 		},
 	];
 
-	// Signs every request the HTTP Request node makes with this credential (OAuth 1.0, HMAC-SHA256).
+	// Signs every request made with this credential (OAuth 1.0, HMAC-SHA256). The NetSuite TBA node
+	// and the built-in HTTP Request node both go through this one function.
 	async authenticate(
 		credentials: ICredentialDataDecryptedObject,
 		requestOptions: IHttpRequestOptions,
